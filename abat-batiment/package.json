@@ -1,0 +1,19 @@
+{
+  "name": "abat-ingenierie",
+  "version": "1.0.0",
+  "description": "Site vitrine A.BÂT INGÉNIERIE — Express backend + static frontend",
+  "main": "server.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
+    "nodemailer": "^6.9.14"
+  },
+  "license": "MIT"
+}
