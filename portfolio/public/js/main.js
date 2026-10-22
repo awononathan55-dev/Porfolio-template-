@@ -144,6 +144,7 @@ function escapeHtml(str = ''){
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
 }
+
 const form = document.querySelector("#contact-form");
 
 form.addEventListener("submit", function (event) {
@@ -152,13 +153,20 @@ form.addEventListener("submit", function (event) {
   const name = document.querySelector("#name").value.trim();
   const email = document.querySelector("#email").value.trim();
   const message = document.querySelector("#message").value.trim();
-
   const recipient = "awononathan55@gmail.com";
-  const subject = encodeURIComponent("New contact message");
-  const body = encodeURIComponent(`
-    Name: ${name}\nEmail: ${email}\n\nMessage:\n${message} `
-  );
+  const subject = document.querySelector("#subject").value.trim();
+  const gmailURL = new URL(
+        "https://mail.google.com/mail/"
+      );
 
-  window.location.href =`
-    mailto:${recipient}?subject=${subject}&body=${body};`
-});
+      gmailURL.searchParams.set("view", "cm");
+      gmailURL.searchParams.set("fs", "1");
+      gmailURL.searchParams.set("to", recipient);
+      gmailURL.searchParams.set("su", subject);
+      gmailURL.searchParams.set("body", message);
+
+      window.open(gmailURL.toString(), "_blank");
+}
+
+
+);
